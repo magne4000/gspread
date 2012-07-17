@@ -9,7 +9,7 @@ Google Data API.
 
 """
 import re
-import urllib
+from urllib.parse import urlencode
 from xml.etree import ElementTree
 
 from . import __version__
@@ -202,7 +202,7 @@ class Client(object):
                             visibility=visibility, projection=projection)
 
         if params:
-            params = urllib.urlencode(params)
+            params = urlencode(params)
             url = '%s?%s' % (url, params)
 
         r = self.session.get(url)
